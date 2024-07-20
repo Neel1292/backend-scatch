@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+const config = require('config');
+const debug = require('debug')("development:mongoose");
 
 mongoose
-.connect('mongodb://127.0.0.1:27017/scatch')
+.connect(`${config.get("MONGODB_URI")}/stash`)
 .then(function(){
-    console.log('Connected...');
+    debug('Connected');
 })
 .catch(function(err){
     console.log(err);
